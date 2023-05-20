@@ -2,22 +2,19 @@ package com.example.healthcaremanagement.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "patient")
-public class Patient {
+@Table(name = "user")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "name")
     private String name;
     private String surname;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dateOfBirthday;
-    @ManyToOne
-    private User user;
+    private String email;
+    private String password;
+
 
 }

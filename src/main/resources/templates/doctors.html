@@ -21,7 +21,6 @@
     <tr th:each="doctor :${doctors}">
         <td>
             <img th:if="${doctor.getProfilePic() != null}" th:src="@{/getImage(imageName=${doctor.getProfilePic()})}" width="55"/>
-            <img th:if="${doctor.getProfilePic() == null}" src="/static/img.png" width="225"/>
         </td>
         <td th:text="${doctor.id}"></td>
         <td th:text="${doctor.name}"></td>

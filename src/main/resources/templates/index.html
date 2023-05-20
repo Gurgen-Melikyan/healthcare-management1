@@ -5,8 +5,13 @@
     <title>Title</title>
 </head>
 <body>
+<div th:if="${user != null}">Welcome <b th:text="${user.getName()}"></b><br>
+    <a href="/logout">Logout</a>
+</div>
 <a href="/doctors">Doctor Page</a><br>
 <a href="/patients">Patient Page</a><br>
 <a href="/appointments">Appointments Page</a>
+<a href="/user/register" th:if="${user == null}">register</a>
+<a href="/login" th:if="${user == null}">Login</a>
 </body>
 </html>

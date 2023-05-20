@@ -16,4 +16,6 @@ public class Doctor {
     private String specialty;
     private int phoneNumber;
     private String profilePic;
+    @ManyToOne
+    private User user;
 }

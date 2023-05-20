@@ -4,7 +4,9 @@ import com.example.healthcaremanagement.entity.Doctor;
 import com.example.healthcaremanagement.entity.Patient;
 import com.example.healthcaremanagement.repository.DoctorRepository;
 import com.example.healthcaremanagement.repository.PatientRepository;
+import com.example.healthcaremanagement.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +34,9 @@ public class PatientController {
     }
 
     @PostMapping("/patients/add")
-    public String addPatient(@ModelAttribute Patient patient) {
+    public String addPatient(@ModelAttribute Patient patient,
+                             @AuthenticationPrincipal CurrentUser currentUser) {
+        patient.setUser(currentUser.getUser());
         patientRepository.save(patient);
         return "redirect:/patients";
     }
